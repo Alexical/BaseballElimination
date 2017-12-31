@@ -100,7 +100,7 @@ public class BaseballElimination {
     }
 
     private boolean isNonTriviallyEliminated(String team) {
-        FlowNetwork G = new FlowNetwork((n * n >> 1) + 3);
+        FlowNetwork G = new FlowNetwork((n * n - n >> 1) + 3);
         int x = teamIndex.get(team);
         int s = G.V() - 2;
         int t = G.V() - 1;
