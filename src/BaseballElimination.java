@@ -105,10 +105,6 @@ public class BaseballElimination {
         int s = G.V() - 2;
         int t = G.V() - 1;
 
-        for (int i = 0; i < n; ++i)
-            if (i != x)
-                G.addEdge(new FlowEdge(i, t, w[x] + r[x] - w[i]));
-
         for (int i = 0, v = n; i < n; ++i) {
             if (i == x) continue;
             for (int j = i + 1; j < n; ++j) {
@@ -118,6 +114,7 @@ public class BaseballElimination {
                 G.addEdge(new FlowEdge(v, j, Double.POSITIVE_INFINITY));
                 ++v;
             }
+            G.addEdge(new FlowEdge(i, t, w[x] + r[x] - w[i]));
         }
 
         FordFulkerson ff = new FordFulkerson(G, s, t);
