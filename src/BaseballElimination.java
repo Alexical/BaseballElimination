@@ -13,7 +13,7 @@ public class BaseballElimination {
 
     private final int n;
     private final String[] teams;
-    private final int[] w, l, r;
+    private final int[] w, d, r;
     private final int[][] g;
     private final Map<String, Integer> teamIndex;
     private final Map<String, Iterable<String>> certificates;
@@ -24,14 +24,14 @@ public class BaseballElimination {
         n = in.readInt();
         teams = new String[n];
         w = new int[n];
-        l = new int[n];
+        d = new int[n];
         r = new int[n];
         g = new int[n][n];
 
         for (int i = 0; i < n; ++i) {
             teams[i] = (in.readString());
             w[i] = in.readInt();
-            l[i] = in.readInt();
+            d[i] = in.readInt();
             r[i] = in.readInt();
             for (int j = 0; j < n; ++j)
                 g[i][j] = in.readInt();
@@ -56,7 +56,7 @@ public class BaseballElimination {
 
     public int losses(String team) {
         if (teamIndex.containsKey(team))
-            return l[teamIndex.get(team)];
+            return d[teamIndex.get(team)];
         else throw new IllegalArgumentException();
     }
 
